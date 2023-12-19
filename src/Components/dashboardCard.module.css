@@ -1,0 +1,21 @@
+.container {
+    background-color: rgb(226, 245, 247);
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    /* min-height: 400px; */
+    margin: 16px;
+    justify-content: space-around;
+
+}
+
+.header {
+    background-color: #a3f0f5;
+    padding: 16px 20px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    font-size: 16px;
+    color: #4e73df !important;
+    font-family: "Segoe UI Emoji";
+    text-align: left;
+
+}

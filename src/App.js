@@ -1,23 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import { Navigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import HeaderComponent from './Layout/header';
+import Content from './Layout/Content';
+import UserForm from './Components/ManagePage';
+import Users from './Components/users';
+import Profile from './Components/profileData';
+import ProfilePage from './Components/ProfilePage';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+      <HeaderComponent/>
+      <Routes>
+        <Route index path="/" element ={<Content/>}></Route>
+        <Route path="/Home" element={<Content/>}></Route>
+        <Route path="/users/manageUsers" element={<UserForm/>}/>
+        <Route path="/users">
+          <Route index element={<Users/>} />
+          <Route path="Profile" element={<ProfilePage/>}/>
+          <Route path=":userID" element={<Profile/>}/>
+          <Route path="edit" element={<h1>EDIT</h1>}/>
+        </Route>
+        <Route path="/404" element={<h3>User Not Fount</h3>}  />
+        <Route path="*" element={<Navigate to="/404" replace/>}/>
+      </Routes>
+    
+      
+      </BrowserRouter>
     </div>
   );
 }
