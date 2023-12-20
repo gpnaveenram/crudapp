@@ -7,6 +7,7 @@ import UserForm from './Components/ManagePage';
 import Users from './Components/users';
 import Profile from './Components/profileData';
 import ProfilePage from './Components/ProfilePage';
+import EditForm from './Components/edit';
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
           <Route index element={<Users/>} />
           <Route path="Profile" element={<ProfilePage/>}/>
           <Route path=":userID" element={<Profile/>}/>
-          <Route path="edit" element={<h1>EDIT</h1>}/>
+          <Route path="edit" element={<EditForm/>}/>
         </Route>
         <Route path="/404" element={<h3>User Not Fount</h3>}  />
         <Route path="*" element={<Navigate to="/404" replace/>}/>

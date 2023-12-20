@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import { createUser } from '../userCRUD';
+import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { getUser, updateUser } from '../userCRUD';
+// import { createUser } from '../userCRUD';
 
-const MyForm = () => {
+const EditForm = () => {
   const initialValue = {
   FirstName: '',
   LastName: '',
@@ -11,6 +13,15 @@ const MyForm = () => {
   AvatarUrl: '',
   Address: ''}
   const [formData, setFormData] = useState({initialValue});
+  const [params] = useSearchParams();
+
+
+  const loadUserforEdit = async ()=>{
+    const response = await getUser(params.get('id'));
+    console.log(response);
+    setFormData(response);
+
+}
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,34 +33,41 @@ const MyForm = () => {
 
   const handleSubmit = (e) => {
       e.preventDefault();
-     createUser(formData);
-     setFormData(initialValue);
+      updateUser(params.get('id'),formData);
+      setFormData(initialValue);
+    
   };
+
+  useEffect(()=>{
+    loadUserforEdit();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   return (
     <div>
-        <h2 style={{color:'blue'}}>Add User</h2>
+        <h2 style={{color:'blue'}}>Edit User</h2>
         <div style={{
         display:'flex',
-        justifyContent:'left'}}
+        justifyContent:'center'}}
         >
     <form onSubmit={handleSubmit}>
-      <label style={{padding:8}}>First Name:</label>
-        
+      <label style={{padding:8}}>First Name:  
         <input style={{marginLeft:16}}
           type="text"
           name="FirstName"
           value={formData.FirstName}
           onChange={handleChange}
         />
+        </label>
       <br></br>
-      <label style={{padding:8}}>Last Name:</label> 
+      <label style={{padding:8}}>Last Name: 
         <input style={{marginLeft:16}}
           type="text"
           name="LastName"
           value={formData.LastName}
           onChange={handleChange}
         />
+        </label>
       <br></br>
 
       <label style={{padding:8,marginRight:39}}>
@@ -114,4 +132,4 @@ const MyForm = () => {
   );
 };
 
-export default MyForm;
+export default EditForm;

@@ -38,3 +38,17 @@ export const deleteUser = async (id)=>{
     return user;
 }
 
+export const updateUser = async (id,userData)=>{
+    console.log(`${userURL}/users/${id}`);
+    const response = await fetch(`${userURL}/users/${id}`,
+    {
+        method:'PUT',
+        body:JSON.stringify(userData),
+        headers:{'Content-Type':'application/json'}
+    }
+    );
+    
+    const user = await response.json();
+    return user;
+}
+
