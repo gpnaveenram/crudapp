@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams,useNavigate } from 'react-router-dom';
 import { getUser, updateUser } from '../userCRUD';
 // import { createUser } from '../userCRUD';
 
@@ -14,13 +14,13 @@ const EditForm = () => {
   Address: ''}
   const [formData, setFormData] = useState({initialValue});
   const [params] = useSearchParams();
+  const navigate = useNavigate();
 
 
   const loadUserforEdit = async ()=>{
     const response = await getUser(params.get('id'));
-    console.log(response);
     setFormData(response);
-
+    
 }
 
   const handleChange = (e) => {
@@ -31,10 +31,11 @@ const EditForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
       e.preventDefault();
-      updateUser(params.get('id'),formData);
+      await updateUser(params.get('id'),formData);
       setFormData(initialValue);
+      navigate("/users/Profile");
     
   };
 
