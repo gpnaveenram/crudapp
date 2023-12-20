@@ -9,6 +9,7 @@ const Profile = ()=>{
 const {userID}=useParams();
 const [user,setUser] = useState([]);
 
+
 const loadUser = async ()=>{
     const response = await getUser(userID); 
     setUser(response);
@@ -31,6 +32,7 @@ return(
                      DateOfBirth={user.dob}
                      Gender={user.Gender}
                      Address={user.Address}
+                     UserID={user.id}
                      />
                     </div>
                 </div>

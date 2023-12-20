@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { deleteUser } from '../userCRUD';
-
-const Card1 = ({ id,FirstName,LastName,Skillset,DateOfBirth,Gender,Address,AvatarUrl,editFlag=false }) => {
+const Card1 = ({ id,FirstName,LastName,Skillset,DateOfBirth,Gender,Address,AvatarUrl,editFlag=false,UserID }) => {
  
 const[displayMessage,setMessage]=useState('');
+
+console.log(UserID);
 
   const removerUser = async (id)=>{
     const response = await deleteUser(id);
@@ -28,7 +29,7 @@ const[displayMessage,setMessage]=useState('');
                               right:5,
                               cursor:'pointer'}} onClick={()=>removerUser(id)}></i>}
 
-      <img style={{marginTop:10,marginLeft:60,height:200,width:150}}src={AvatarUrl} alt={`${FirstName} ${LastName}`} className="card-image" />
+      <img style={{marginTop:10,marginLeft:60,height:150,width:150}}src={AvatarUrl} alt={`${FirstName} ${LastName}`} className="card-image" />
       <div style={{fontSize:30,color:'red'}}>{displayMessage}</div>
       <div className="card-content">
         <h2 className="card-name">{`${FirstName} ${LastName}`}</h2>
@@ -37,6 +38,7 @@ const[displayMessage,setMessage]=useState('');
         <p style={{marginLeft:'10px'}} className="card-dob"><strong>Gender:</strong> {Gender}</p>
         <p style={{marginLeft:'10px'}} className="card-dob"><strong>Date of Birth:</strong> {DateOfBirth}</p>
         <p style={{marginLeft:'10px'}} className="card-address"><strong>Address:</strong> {Address}</p>
+        {/* <p style={{marginLeft:'10px'}} className="card-id"><strong>User ID:</strong>{UserID}</p> */}
         </div>
       </div>
 
