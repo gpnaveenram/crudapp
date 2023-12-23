@@ -22,8 +22,19 @@ const HeaderComponent = () => {
                     <div style={{ display: 'flex', color: '#4e73df', }}><i className="fa-solid fa-users-rays fa-3x" style={{ color: "#1162ee;" }}></i></div>
                     <div className={styles.titleName} style={{ paddingTop: 12, paddingLeft: 12, textAlign: 'left' }}><b>User Dashboard</b></div>
                 </div>
-                <button onClick={handleClick} className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <button onClick={handleClick} className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
                     <div class="navbar-toggler-icon"></div>
+                    {display && (
+                    <ul className="dropdown-menu dropdown-menu-end show" aria-labelledby="navbarDropdown" data-bs-popper="static" style={{height:160,width:200}}>   
+                            <li><Link onClick={handleClick} style={{ textDecoration: 'none', textDecorationLine: 'none',margin:15 }} className={styles.titleName} to="/Home">Home</Link></li>
+                            <br></br>
+                            <li><Link onClick={handleClick} style={{ textDecoration: 'none', textDecorationLine: 'none' ,margin:15}} className={styles.titleName} to="/users">Users</Link></li>
+                            <br></br>
+                            <li><Link onClick={handleClick} style={{ textDecoration: 'none', textDecorationLine: 'none' ,margin:15}} className={styles.titleName} to="users/Profile">Profile</Link></li>
+                            <br></br>
+                            <li><Link onClick={handleClick} style={{ textDecoration: 'none', textDecorationLine: 'none' ,margin:15}} className={styles.titleName} to="/users/manageUsers">Manage Users&nbsp;&nbsp;<i class="fa-solid fa-people-roof" style={{ color: "#276fec;" }}></i></Link></li>
+                    </ul>
+                )}
                 </button>
                 
                 <div style={{ marginLeft: 50 }} class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -54,14 +65,7 @@ const HeaderComponent = () => {
 
                     }}></i>
                 </div>
-                {display && (
-                    <ul className="dropdown-menu dropdown-menu-end show" aria-labelledby="navbarDropdown" data-bs-popper="static">   
-                            <li><Link onClick={handleClick} style={{ textDecoration: 'none', textDecorationLine: 'none',padding:15 }} className={styles.titleName} to="/Home">Home</Link></li>
-                            <li><Link onClick={handleClick} style={{ textDecoration: 'none', textDecorationLine: 'none' ,padding:15}} className={styles.titleName} to="/users">Users</Link></li>
-                            <li><Link onClick={handleClick} style={{ textDecoration: 'none', textDecorationLine: 'none' ,padding:15}} className={styles.titleName} to="users/Profile">Profile</Link></li>
-                            <li><Link onClick={handleClick} style={{ textDecoration: 'none', textDecorationLine: 'none' ,padding:15}} className={styles.titleName} to="/users/manageUsers">Manage Users&nbsp;&nbsp;<i class="fa-solid fa-people-roof" style={{ color: "#276fec;" }}></i></Link></li>
-                    </ul>
-                )}
+                
             </nav>
 
 
