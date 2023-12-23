@@ -55,14 +55,12 @@ const HeaderComponent = () => {
                     }}></i>
                 </div>
                 {display && (
-                    <div style={{display:'block',justifyContent:'center'}} className="nav-links">
-                        
-                            <Link onClick={handleClick} style={{ textDecoration: 'none', textDecorationLine: 'none' ,display:'block'}} className={styles.titleName} to="/Home">Home</Link>
-                            <Link onClick={handleClick} style={{ textDecoration: 'none', textDecorationLine: 'none',display:'block' }} className={styles.titleName} to="/users">Users</Link>
-                            <Link onClick={handleClick} style={{ textDecoration: 'none', textDecorationLine: 'none',display:'block' }} className={styles.titleName} to="users/Profile">Profile</Link>
-                            <Link onClick={handleClick} style={{ textDecoration: 'none', textDecorationLine: 'none',display:'block' }} className={styles.titleName} to="/users/manageUsers">&nbsp;Manage Users&nbsp;&nbsp;<i class="fa-solid fa-people-roof" style={{ color: "#276fec;" }}></i></Link>
-                        
-                    </div>
+                    <ul className="dropdown-menu dropdown-menu-end show" aria-labelledby="navbarDropdown" data-bs-popper="static">   
+                            <li><Link onClick={handleClick} style={{ textDecoration: 'none', textDecorationLine: 'none',padding:15 }} className={styles.titleName} to="/Home">Home</Link></li>
+                            <li><Link onClick={handleClick} style={{ textDecoration: 'none', textDecorationLine: 'none' ,padding:15}} className={styles.titleName} to="/users">Users</Link></li>
+                            <li><Link onClick={handleClick} style={{ textDecoration: 'none', textDecorationLine: 'none' ,padding:15}} className={styles.titleName} to="users/Profile">Profile</Link></li>
+                            <li><Link onClick={handleClick} style={{ textDecoration: 'none', textDecorationLine: 'none' ,padding:15}} className={styles.titleName} to="/users/manageUsers">Manage Users&nbsp;&nbsp;<i class="fa-solid fa-people-roof" style={{ color: "#276fec;" }}></i></Link></li>
+                    </ul>
                 )}
             </nav>
 
